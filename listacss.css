@@ -1,0 +1,102 @@
+/* Global layout */
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f4f8;
+    color: #222;
+    padding: 24px;
+}
+
+/* Page container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.container h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+/* Relatorio button */
+.relatorio {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #2d6cdf;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+}
+
+.relatorio:hover { opacity: 0.95 }
+
+/* Row that contains the cards */
+.info {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Cards inside .info */
+.info > div {
+    flex: 1 1 30%;
+    min-width: 240px;
+    background: white;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(25,35,50,0.07);
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.info > div:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(25,35,50,0.12);
+}
+
+.info h3{
+    margin: 0;
+    font-size: 0.95rem;
+    color: #555;
+    text-align: center;
+}
+
+.info p{
+    margin: 4px 0 0 0;
+    font-size: 1.35rem;
+    text-align: center;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Accent bars */
+.container-ativo{ border-left:6px solid #2ecc71 }
+.eficiencia{ border-left:6px solid #3498db }
+.dados3{ border-left:6px solid #9b59b6 }
+
+/* Responsive: stack cards on small screens */
+@media (max-width:720px){
+    .container{ padding: 0 8px }
+    .info{ flex-direction: column }
+    .info > div{ flex-basis: 100%; min-width: unset }
+    .container h1{ font-size: 1.4rem }
+}
