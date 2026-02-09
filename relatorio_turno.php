@@ -27,15 +27,15 @@ include_once("conexao.php");
 
             <?php
             $stmt = $pdo->query("
-                SELECT tipo_maquina, status_operacional, COUNT(status_operacional) as total 
-                FROM tb_maquinas
-                WHERE tb_maquinas.tipo_maquina = 'Braço Robótico'
-                GROUP BY(status_operacional);");
+                SELECT tb_producao.turno, MAX(tb_producao.qtd_produzida) as maior_produzido, MIN(tb_producao.qtd_produzida) as menor_produzida, data_producao
+                FROM tb_producao
+                WHERE turno = 'B'
+                AND data_producao = '2024-05-04';");
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>";
-                echo "<td>" . $row['tipo_maquina'] . "</td>";
-                echo "<td>" . $row['status_operacional'] . "</td>";
-                echo "<td>" . $row['total'] . "</td>";
+                echo "<td>" . $row['turno'] . "</td>";
+                echo "<td>" . $row['maior_produzido'] . "</td>";
+                echo "<td>" . $row['menor_produzida'] . "</td>";
                 echo "</tr>";
             }
             ?>

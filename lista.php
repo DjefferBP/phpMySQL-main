@@ -46,6 +46,7 @@ $total_maquinas = $row['total_maquinas'];
             <a href="relatorio.php"><button class="relatorio">RELATÓRIO GERAL</button></a>
             <a href="relatorio_maquina.php"><button class="relatorio">RELATÓRIO INDIVIDUAL</button></a>
             <a href="relatorio_status.php"><button class="relatorio">RELATÓRIO DE STATUS</button></a>
+            <a href="relatorio_turno.php"><button class="relatorio">RELATÓRIO DE TURNO</button></a>
         </div>
         
         <div class="info">
