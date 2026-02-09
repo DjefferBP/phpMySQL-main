@@ -17,28 +17,27 @@ include_once("conexao.php");
 </head>
 <body>
     <div class="container">
-        <H1>RELATÓRIO DE PRODUÇÃO</H1>
+        <H1>RELATÓRIO DE PRODUÇÃO INDIVIDUAL DAS MÁQUINAS</H1>
         <a href="lista.php"><button class="voltar">VOLTAR</button></a>
         <table>
             <tr>
-                <th>TAG DA MAQUINA</th>
+                <th>EQUIPAMENTO</th>
                 <th>TIPO DA MAQUINA</th>
                 <th>QUANTIDADE PRODUZIDA</th>
-                <th>DATA DE PRODUÇÃO</th>
+                <th>VEZES OPERADA</th>
             </tr>
 
             <?php
             $stmt = $pdo->query("
-                SELECT m.tag_maquina, m.tipo_maquina, p.qtd_produzida, p.data_producao
+                SELECT m.tag_maquina as equipamento, m.tipo_maquina as tipo_maquina, sum(p.qtd_produzida) as volume_total, count(p.id_registro) as vezes_operada
                 FROM tb_maquinas m
-                JOIN tb_producao p ON m.id_maquina = p.id_maquina
-                ORDER BY p.data_producao DESC");
+                INNER JOIN tb_producao p ON m.id_maquina = p.id_maquina GROUP BY(m.tag_maquina), m.tipo_maquina ORDER BY volume_total DESC");
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>";
-                echo "<td>" . $row['tag_maquina'] . "</td>";
+                echo "<td>" . $row['equipamento'] . "</td>";
                 echo "<td>" . $row['tipo_maquina'] . "</td>";
-                echo "<td>" . $row['qtd_produzida'] . "</td>";
-                echo "<td>" . $row['data_producao'] . "</td>";
+                echo "<td>" . $row['volume_total'] . "</td>";
+                echo "<td>" . $row['vezes_operada'] . "</td>";
                 echo "</tr>";
             }
             ?>

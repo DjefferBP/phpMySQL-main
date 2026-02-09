@@ -100,3 +100,30 @@ body {
     .info > div{ flex-basis: 100%; min-width: unset }
     .container h1{ font-size: 1.4rem }
 }
+
+
+.navbar {
+    width: 100%;
+    background-color: #2d6cdf;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.navbar-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+.navbar-item {
+    color: #fff;
+    font-weight: 600;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+}
