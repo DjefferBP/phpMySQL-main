@@ -9,10 +9,7 @@ $stmt->execute([$login_unico, $senha]);
 if ($stmt->rowCount() > 0) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
     session_start();
-    $_SESSION['id_usuario'] = $user['id_usuario'];
-    $_SESSION['nome_usuario'] = $user['nome_usuario'];
-    $_SESSION['nivel_acesso'] = $user['nivel_acesso'];
-
+    $_SESSION["usuario"] = $user;
     header("Location: lista.php");
 } else {
     // Login inválido, redirecionar de volta para a página de login com uma mensagem de erro
